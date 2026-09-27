@@ -1,0 +1,17 @@
+[Unit]
+Description=Xiaoxuebao model router
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/xiaoxuebao-hermes/router
+EnvironmentFile=/opt/xiaoxuebao-hermes/.env
+Environment=XIAOXUEBAO_TEXT_PROVIDER=aliyun
+ExecStart=/opt/xiaoxuebao-hermes/router/.venv/bin/uvicorn aliyun_router:app --host 127.0.0.1 --port 8649
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

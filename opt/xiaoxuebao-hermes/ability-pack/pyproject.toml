@@ -1,0 +1,15 @@
+[project]
+name = "xiaoxuebao-ability-pack"
+version = "0.1.0"
+description = "Shared Xiaoxuebao ability pack for multi-family Hermes deployments"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

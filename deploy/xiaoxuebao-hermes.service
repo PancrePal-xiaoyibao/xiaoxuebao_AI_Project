@@ -1,0 +1,15 @@
+[Unit]
+Description=Xiaoxuebao Hermes gateway
+After=network-online.target docker.service
+Wants=network-online.target docker.service
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/xiaoxuebao-hermes
+ExecStart=/usr/bin/docker compose -f /opt/xiaoxuebao-hermes/docker-compose.yml up -d
+ExecStop=/usr/bin/docker compose -f /opt/xiaoxuebao-hermes/docker-compose.yml down
+RemainAfterExit=yes
+TimeoutStartSec=600
+
+[Install]
+WantedBy=multi-user.target

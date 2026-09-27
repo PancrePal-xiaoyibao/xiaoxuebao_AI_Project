@@ -1,0 +1,15 @@
+[Unit]
+Description=Xiaoxuebao private SearXNG
+After=network-online.target docker.service
+Wants=network-online.target docker.service
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/xiaoxuebao-hermes/searxng
+ExecStart=/usr/bin/docker compose -f /opt/xiaoxuebao-hermes/searxng/docker-compose.yml up -d
+ExecStop=/usr/bin/docker compose -f /opt/xiaoxuebao-hermes/searxng/docker-compose.yml down
+RemainAfterExit=yes
+TimeoutStartSec=600
+
+[Install]
+WantedBy=multi-user.target

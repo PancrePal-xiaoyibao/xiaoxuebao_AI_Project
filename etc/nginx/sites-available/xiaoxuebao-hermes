@@ -1,0 +1,39 @@
+server {
+  listen 80 default_server;
+  listen [::]:80 default_server;
+  listen 443 ssl http2 default_server;
+  listen [::]:443 ssl http2 default_server;
+  server_name xiaoxuebao.icu 47.95.38.64 _;
+
+  ssl_certificate /etc/nginx/ssl/xiaoxuebao.icu/xiaoxuebao.icu.pem;
+  ssl_certificate_key /etc/nginx/ssl/xiaoxuebao.icu/xiaoxuebao.icu.key;
+  ssl_protocols TLSv1.2 TLSv1.3;
+  ssl_ciphers HIGH:!aNULL:!MD5;
+  ssl_prefer_server_ciphers off;
+  ssl_session_cache shared:SSL:10m;
+  ssl_session_timeout 10m;
+
+  root /opt/xiaoxuebao-hermes/web/current;
+  index index.html;
+  client_max_body_size 20m;
+
+  location = /health {
+    add_header Content-Type text/plain;
+    return 200 "xiaoxuebao hermes ingress ok\n";
+  }
+
+  location /api/ {
+    proxy_pass http://127.0.0.1:8660;
+    proxy_http_version 1.1;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_read_timeout 180s;
+    proxy_send_timeout 180s;
+  }
+
+  location / {
+    try_files $uri $uri/ /index.html;
+  }
+}

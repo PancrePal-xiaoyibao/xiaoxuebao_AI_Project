@@ -1,0 +1,37 @@
+xiaozhiserver.cloud, www.xiaozhiserver.cloud {
+  encode gzip
+
+  handle /starbridge-app/* {
+    reverse_proxy starbridge:4173
+  }
+
+  handle_path /feishu-callback/* {
+    reverse_proxy 172.17.0.1:8090
+  }
+
+  handle /aio-pc/* {
+    root * /srv/personal-ip
+    try_files {path} {path}/index.html =404
+    file_server
+  }
+
+  handle {
+    root * /srv/personal-ip
+    try_files {path} {path}/index.html /index.html
+    file_server
+  }
+}
+
+xiaoxuebao.xiaozhiserver.cloud {
+  encode gzip
+
+  handle /api/* {
+    reverse_proxy 172.17.0.1:8660
+  }
+
+  handle {
+    root * /srv/personal-ip/xiaoxuebao
+    try_files {path} {path}/ /index.html
+    file_server
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "pack_name": "xiaoxuebao-ability-pack",
+  "pack_version": "0.1.0",
+  "skill_version": "0.1.0",
+  "knowledge_version": "0.1.0",
+  "primary_runtime": "hermes",
+  "family_runtime_policy": "shared_pack_isolated_family_runtime",
+  "public_pack_writeback_allowed": false,
+  "contains_private_family_data": false,
+  "adapters": ["hermes", "fastapi", "openclaw", "dify"]
+}

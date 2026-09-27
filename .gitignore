@@ -1,0 +1,23 @@
+# Secrets and local runtime configuration
+opt/xiaoxuebao-hermes/.env
+opt/xiaoxuebao-hermes/.env.*
+!opt/xiaoxuebao-hermes/.env.example
+**/profiles/
+**/open-webui-data/
+**/data/
+**/*.db
+**/*.sqlite
+**/*.sqlite3
+etc/nginx/ssl/
+
+# Python environments and generated files
+**/.venv/
+**/__pycache__/
+**/.pytest_cache/
+**/*.pyc
+**/*.tmp-upload
+**/*.bak-*
+
+# Deployment/runtime logs
+**/*.log
+

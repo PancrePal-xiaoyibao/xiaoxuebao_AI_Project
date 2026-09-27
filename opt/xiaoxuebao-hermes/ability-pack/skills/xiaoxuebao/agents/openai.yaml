@@ -1,0 +1,4 @@
+interface:
+  display_name: "小雪宝白血病儿童助手"
+  short_description: "面向白血病患儿家庭的安全科普与照护支持能力包模板库"
+  default_prompt: "使用小雪宝能力回答白血病患儿家庭的科普和照护问题，并遵守医疗安全边界。"

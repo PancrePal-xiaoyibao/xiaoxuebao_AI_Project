@@ -1,0 +1,15 @@
+model:
+  default: deepseek-v4-flash
+  provider: custom:xiaoxuebao
+  base_url: http://127.0.0.1:8649/v1
+
+providers:
+  xiaoxuebao:
+    name: xiaoxuebao
+    api: http://127.0.0.1:8649/v1
+    key_env: OPENAI_API_KEY
+    default_model: deepseek-v4-flash
+    transport: chat_completions
+
+fallback_providers: []
+_config_version: 27

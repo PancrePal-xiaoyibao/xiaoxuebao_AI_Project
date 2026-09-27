@@ -1,0 +1,24 @@
+{
+  "description": "Three-family isolation POC. All families share the same ability pack but keep runtime data separate.",
+  "ability_pack_version": "0.1.0",
+  "families": [
+    {
+      "family_id": "family-a",
+      "profile_name": "xiaoxuebao-family-family-a",
+      "memory_path": "runtime-data/families/family-a/memory",
+      "token_ledger_path": "runtime-data/families/family-a/token-ledger.jsonl"
+    },
+    {
+      "family_id": "family-b",
+      "profile_name": "xiaoxuebao-family-family-b",
+      "memory_path": "runtime-data/families/family-b/memory",
+      "token_ledger_path": "runtime-data/families/family-b/token-ledger.jsonl"
+    },
+    {
+      "family_id": "family-c",
+      "profile_name": "xiaoxuebao-family-family-c",
+      "memory_path": "runtime-data/families/family-c/memory",
+      "token_ledger_path": "runtime-data/families/family-c/token-ledger.jsonl"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "profile_name": "xiaoxuebao-family-{family_id}",
+  "ability_pack_path": "../",
+  "skills": ["xiaoxuebao"],
+  "skill_version": "0.1.0",
+  "knowledge_version": "0.1.0",
+  "memory_path": "runtime-data/families/{family_id}/memory",
+  "token_ledger_path": "runtime-data/families/{family_id}/token-ledger.jsonl",
+  "privacy_state_path": "runtime-data/families/{family_id}/privacy-state.json",
+  "conversation_retention": {
+    "raw_private_messages": "family_runtime_only",
+    "public_pack_writeback": false
+  },
+  "model_provider": {
+    "configured_per_family": true,
+    "secret_source": "family_runtime_environment"
+  }
+}

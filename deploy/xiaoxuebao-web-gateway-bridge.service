@@ -1,0 +1,13 @@
+[Unit]
+Description=Xiaoxuebao web gateway Docker bridge listener
+After=network-online.target xiaoxuebao-web-gateway.service
+Requires=xiaoxuebao-web-gateway.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/socat TCP-LISTEN:8660,bind=172.17.0.1,reuseaddr,fork TCP:127.0.0.1:8660
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

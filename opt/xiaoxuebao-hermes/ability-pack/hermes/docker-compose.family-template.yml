@@ -1,0 +1,11 @@
+services:
+  hermes-family:
+    image: hermes-agent:local
+    container_name: xiaoxuebao-family-${FAMILY_ID}
+    environment:
+      FAMILY_ID: ${FAMILY_ID}
+      XIAOXUEBAO_ABILITY_PACK: /ability-pack
+    volumes:
+      - ../:/ability-pack:ro
+      - ./runtime-data/families/${FAMILY_ID}:/family-runtime
+    restart: unless-stopped

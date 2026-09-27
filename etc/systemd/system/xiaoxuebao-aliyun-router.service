@@ -1,0 +1,16 @@
+[Unit]
+Description=Xiaoxuebao Aliyun Bailian OpenAI-compatible Router
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/xiaoxuebao-hermes/router
+EnvironmentFile=/opt/xiaoxuebao-hermes/.env
+ExecStart=/usr/bin/python3 -m uvicorn aliyun_router:app --host 127.0.0.1 --port 8649
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

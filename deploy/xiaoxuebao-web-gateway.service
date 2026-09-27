@@ -1,0 +1,19 @@
+[Unit]
+Description=Xiaoxuebao Web Gateway
+After=network-online.target xiaoxuebao-hermes.service xiaoxuebao-model-router.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/xiaoxuebao-hermes/web-gateway
+EnvironmentFile=/opt/xiaoxuebao-hermes/.env
+Environment=XIAOXUEBAO_ROOT=/opt/xiaoxuebao-hermes
+Environment=XIAOXUEBAO_GATEWAY_DATA_DIR=/opt/xiaoxuebao-hermes/web-gateway/data
+Environment=XIAOXUEBAO_HERMES_CONTAINER=xiaoxuebao-hermes
+ExecStart=/opt/xiaoxuebao-hermes/web-gateway/.venv/bin/uvicorn app:app --host 127.0.0.1 --port 8660 --proxy-headers
+Restart=always
+RestartSec=3
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target

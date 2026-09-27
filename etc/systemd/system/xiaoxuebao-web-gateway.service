@@ -1,0 +1,15 @@
+[Unit]
+Description=Xiaoxuebao Web Gateway
+After=network.target docker.service
+Wants=docker.service
+
+[Service]
+WorkingDirectory=/opt/xiaoxuebao-hermes/web-gateway
+Environment=XIAOXUEBAO_ROOT=/opt/xiaoxuebao-hermes
+ExecStart=/opt/xiaoxuebao-hermes/web-gateway/.venv/bin/uvicorn app:app --host 127.0.0.1 --port 8660 --proxy-headers
+Restart=always
+RestartSec=3
+UMask=0077
+
+[Install]
+WantedBy=multi-user.target
